@@ -304,7 +304,7 @@ subscriptions model =
 initModel = makeInitModel (9,9)
 main = Html.program {init=(initModel,Random.generate NewTable (randomTable (initModel.size) 8) ),subscriptions = subscriptions, view = Html.Lazy.lazy view, update = (\ msg model -> update msg model)}
 
-view model = Html.table [Attrs.style [("background-color","lightgrey")]] [ Html.tr [] [ Html.th [Attrs.style [("width","40px")]] [renderMineCount model.table]
+view model = Html.table [Attrs.style [("background-color","lightgrey"),("cursor","pointer")]] [ Html.tr [] [ Html.th [Attrs.style [("width","40px")]] [renderMineCount model.table]
                                          ,Html.th [] [renderRestart model.state]
                                          ,Html.th [Attrs.style [("width","40px")]] [renderTimer model.duration]]
                             ,Html.tr [] [Html.td [Attrs.colspan 3] [renderTable (tableElement (makeSpriteTable model.state model.table)) model.size]]]
